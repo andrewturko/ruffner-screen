@@ -11,9 +11,9 @@ let amOrPm = 'AM';
 const canvasBg = '#000000';
 
 // Define colors for hour, minute and second hand
-const hourActiveColor = '#39D98A',
-      minuteActiveColor = '#3E7BFA',
-      secondActiveColor = '#FDAC42';
+const hourActiveColor = '#A6A6A6',
+      minuteActiveColor = '#7A7A7A',
+      secondActiveColor = '#C0C0C0';
 
 // Define inactive colors for hour, minute and second hand
 const hourInactiveColor = '#3C4043',
