@@ -1,7 +1,7 @@
 {
   "name": "Ruffner Dashboard",
   "short_name": "Ruffner Dashboard",
-  "start_url": "/",
+  "start_url": "/ruffner-screen",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
