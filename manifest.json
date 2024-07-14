@@ -1,6 +1,6 @@
 {
-    "name": "My Web App",
-    "short_name": "WebApp",
+    "name": "Ruffner Screensaver",
+    "short_name": "Screensaver",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#000000",
