@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clock</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Home Dashboard</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512x512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Screensaver">
+    <script>
+        const version = '1.0.1'; // Update this version number whenever you make changes
+        document.write('<link rel="stylesheet" href="styles.css?v=' + version + '">');
+    </script>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
     <a href="//control4v3">
         <canvas id="canvas"></canvas>
     </a>
-    <script src="script.js"></script>
+    <script>
+        document.write('<script src="script.js?v=' + version + '"><\/script>');
+    </script>
 </body>
 </html>
