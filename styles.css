@@ -88,16 +88,6 @@ body {
   top: calc(var(--size) / 2 - 2.5px);
 }
 
-.clock__indicator:nth-of-type(n) {
-  transform: rotate(calc(6deg * var(--n)));
-}
-
-@for $i from 1 through 60 {
-  .clock__indicator:nth-of-type(#{$i}) {
-    transform: rotate(calc(6deg * #{$i}));
-  }
-}
-
 @keyframes time {
   to {
     transform: rotateZ(360deg);
