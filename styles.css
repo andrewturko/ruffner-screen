@@ -1,7 +1,7 @@
 /* Options */
 :root {
     --black: #000000;
-    --size: 200px;
+    --size: 400px;
     --white: #f4eed7;
     --feature: #4b9aaa;
   }
@@ -19,21 +19,17 @@
     align-items: center;
     font-family: sans-serif;
     color: white;
-  }
-  
-  p {
-    color: var(--white);
-    font-size: 0.8em;
-    opacity: 0.75;
+    margin: 0;
   }
   
   .clock {
     height: var(--size);
     width: var(--size);
-    border-radius: calc(var(--size) / 2);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     position: relative;
+    border: 10px solid var(--white);
   }
   
   .clock__second,
@@ -86,15 +82,19 @@
     background: var(--feature);
     width: 5px;
     height: 5px;
-    border-radius: 3px;
+    border-radius: 50%;
     position: absolute;
     z-index: 4;
-    top: calc(var(--size) / 2 - 3px);
+    top: calc(var(--size) / 2 - 2.5px);
+  }
+  
+  .clock__indicator:nth-of-type(n) {
+    transform: rotate(calc(6deg * var(--n)));
   }
   
   @for $i from 1 through 60 {
-    section:nth-of-type(#{$i}) {
-      transform: rotateZ(calc(6deg * #{$i}));
+    .clock__indicator:nth-of-type(#{$i}) {
+      transform: rotate(calc(6deg * #{$i}));
     }
   }
   
