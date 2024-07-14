@@ -11,7 +11,7 @@ setTime(3600 * minutes, "minute");
 setTime(43200 * hours, "hour");
 
 function setTime(left, hand) {
-  document.querySelector(".clock__" + hand).style.animationDelay = "" + left * -1 + "s";
+  $(".clock__" + hand).css("animation-delay", "" + left * -1 + "s");
 }
 
 function getSecondsToday() {
