@@ -1,12 +1,14 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const dpr = window.devicePixelRatio || 1;
+const scaleFactor = 1.5;  // Scaling factor to make the clock 150% larger
 
 // set the start point of the hour, minute and second hand to top
 const threePIByTwo = (3 * Math.PI) / 2;
 
 let amOrPm = 'AM';
 
-const canvasBg = '#1C1C28';
+const canvasBg = '#000000';
 
 // Define colors for hour, minute and second hand
 const hourActiveColor = '#39D98A',
@@ -21,8 +23,11 @@ const hourInactiveColor = '#3C4043',
 const timerBg = '#282A2D';
 
 function init() {
-    canvas.width = document.documentElement.clientWidth - 35;
-    canvas.height = document.documentElement.clientHeight - 45;
+    canvas.width = (document.documentElement.clientWidth - 35) * dpr;
+    canvas.height = (document.documentElement.clientHeight - 45) * dpr;
+    canvas.style.width = `${document.documentElement.clientWidth - 35}px`;
+    canvas.style.height = `${document.documentElement.clientHeight - 45}px`;
+    ctx.scale(dpr, dpr);
 
     // This calls the draw function repeatedly at a rate of 60 times per second
     window.requestAnimationFrame(draw);    
@@ -30,8 +35,8 @@ function init() {
 
 function draw() {
     // Finding center point of canvas
-    const centerX = canvas.width / 2,
-          centerY = canvas.height / 2;
+    const centerX = (canvas.width / dpr) / 2,
+          centerY = (canvas.height / dpr) / 2;
 
     const date = new Date();
 
@@ -51,23 +56,23 @@ function draw() {
     let radS = 0.006 * ((sec * 1000) + ms);
 
     // Draw Canvas
-    drawRect(0, 0, canvas.width, canvas.height, canvasBg);
+    drawRect(0, 0, canvas.width / dpr, canvas.height / dpr, canvasBg);
 
     // Hour Hand
-    drawCircle(centerX, centerY, 110, 0, 360, false, hourInactiveColor, 'stroke', 90);
-    drawCircle(centerX, centerY, 110, threePIByTwo, rad(radH) + threePIByTwo, false, hourActiveColor, 'stroke', 90);
+    drawCircle(centerX, centerY, 110 * scaleFactor, 0, 360, false, hourInactiveColor, 'stroke', 90 * scaleFactor);
+    drawCircle(centerX, centerY, 110 * scaleFactor, threePIByTwo, rad(radH) + threePIByTwo, false, hourActiveColor, 'stroke', 90 * scaleFactor);
 
     // Minute Hand
-    drawCircle(centerX, centerY, 180, 0, 360, false, minuteInactiveColor, 'stroke', 50);
-    drawCircle(centerX, centerY, 180, threePIByTwo, rad(radM) + threePIByTwo, false, minuteActiveColor, 'stroke', 50);
+    drawCircle(centerX, centerY, 180 * scaleFactor, 0, 360, false, minuteInactiveColor, 'stroke', 50 * scaleFactor);
+    drawCircle(centerX, centerY, 180 * scaleFactor, threePIByTwo, rad(radM) + threePIByTwo, false, minuteActiveColor, 'stroke', 50 * scaleFactor);
 
     // Second Hand
-    drawCircle(centerX, centerY, 220, 0, 360, false, secondInactiveColor, 'stroke', 30);
-    drawCircle(centerX, centerY, 220, threePIByTwo, rad(radS) + threePIByTwo, false, secondActiveColor, 'stroke', 30);
+    drawCircle(centerX, centerY, 220 * scaleFactor, 0, 360, false, secondInactiveColor, 'stroke', 30 * scaleFactor);
+    drawCircle(centerX, centerY, 220 * scaleFactor, threePIByTwo, rad(radS) + threePIByTwo, false, secondActiveColor, 'stroke', 30 * scaleFactor);
 
     // Digital Timer
-    drawCircle(centerX, centerY, 90, 0, 360, false, timerBg, 'fill', '50');
-    drawText(`${hr.toString().padStart(2, "0")}:${min.toString().padStart(2, "0")} ${amOrPm}`, canvas.width / 2 - 60, canvas.height / 2 + 15, '#ffffff', '28px');
+    drawCircle(centerX, centerY, 90 * scaleFactor, 0, 360, false, timerBg, 'fill', '50');
+    drawText(`${hr.toString().padStart(2, "0")}:${min.toString().padStart(2, "0")} ${amOrPm}`, centerX - 90, centerY + 22.5, '#ffffff', '42px');
 
     window.requestAnimationFrame(draw);
 }
