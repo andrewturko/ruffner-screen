@@ -1,95 +1,25 @@
-/* Options */
-:root {
-  --black: #000000;
-  --size: 400px;
-  --white: #f4eed7;
-  --feature: #4b9aaa;
-}
-
-html,
-body {
-  height: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 body {
-  background: var(--black);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  color: white;
-  margin: 0;
+    background-color: #1C1C28;
+    text-align: center;
+    color: #FEFEFE;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
 }
 
-.clock {
-  height: var(--size);
-  width: var(--size);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  border: 10px solid var(--white);
+canvas {
+    object-fit: contain;
+    width: 100%;
+    margin: 0px auto;
+    display: block;
 }
 
-.clock__second,
-.clock__minute,
-.clock__hour,
-.clock__indicator {
-  position: absolute;
-  left: calc(50% - 1px);
-  width: 2px;
-  background: var(--white);
-  transform-origin: bottom center;
-  z-index: 2;
-  border-radius: 1px;
+a {
+    color: #fafafa;
+    transition: linear 0.3s;
 }
 
-.clock__second {
-  height: calc(var(--size) / 2 - 10px);
-  margin-top: 10px;
-  background: var(--feature);
-  animation: time 60s infinite steps(60);
-  z-index: 3;
-}
-
-.clock__minute {
-  height: calc(var(--size) / 2 - 20px);
-  margin-top: 20px;
-  opacity: 0.75;
-  animation: time 3600s linear infinite;
-}
-
-.clock__hour {
-  height: calc(var(--size) / 2 - 40px);
-  margin-top: 40px;
-  animation: time 43200s linear infinite;
-}
-
-.clock__indicator {
-  height: calc(var(--size) / 2 - 2px);
-  border-top: 2px solid var(--feature);
-  background: none;
-}
-
-.clock__indicator:nth-of-type(5n) {
-  opacity: 1;
-  height: calc(var(--size) / 2 - 7px);
-  border-top: 7px solid var(--white);
-}
-
-.clock__axis {
-  background: var(--feature);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 4;
-  top: calc(var(--size) / 2 - 2.5px);
-}
-
-@keyframes time {
-  to {
-    transform: rotateZ(360deg);
-  }
+a:hover {
+    opacity: 0.8;
 }
